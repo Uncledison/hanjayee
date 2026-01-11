@@ -3,23 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- 1. 파비콘 변경 (기존 vite.svg 대신 업로드한 작은 이미지 사용) -->
-    <link rel="icon" type="image/png" href="/image_231e32.png" />
-    
-    <!-- 2. 모바일 홈 화면 아이콘 (큰 이미지 사용) -->
-    <link rel="apple-touch-icon" href="/image_231e52.png" />
-
-    <!-- 3. PWA 테마 컬러 (브라우저 상단 색상) -->
-    <meta name="theme-color" content="#ffffff" />
-    
-    <!-- 4. 매니페스트 파일 연결 -->
-    <link rel="manifest" href="/manifest.json" />
-
     <title>lecture-scheduler</title>
+
+    <!-- 1. PWA 테마 컬러 (주소창 색상 등) -->
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- 2. 매니페스트 파일 연결 (public/manifest.json이 있어야 함) -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- 3. 아이콘 설정 (public 폴더에 있는 이미지 연결) -->
+    <!-- 브라우저 탭 아이콘 (작은 이미지) -->
+    <link rel="icon" type="image/png" href="/image_231e32.png" />
+    <!-- 모바일 홈 화면 아이콘 (큰 이미지) -->
+    <link rel="apple-touch-icon" href="/image_231e52.png" />
   </head>
   <body>
     <div id="root"></div>
+    <!-- Vite 메인 스크립트 (기존 유지) -->
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- 4. 서비스 워커 등록 스크립트 (설치 버튼을 위해 필수) -->
+    <!-- public/sw.js 파일이 반드시 존재해야 작동합니다. -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('ServiceWorker 등록 성공:', registration.scope);
+            })
+            .catch((err) => {
+              console.log('ServiceWorker 등록 실패:', err);
+            });
+        });
+      }
+    </script>
   </body>
 </html>
