@@ -1,9 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- 1. 파비콘 변경 (기존 vite.svg 대신 업로드한 작은 이미지 사용) -->
+    <link rel="icon" type="image/png" href="/image_231e32.png" />
+    
+    <!-- 2. 모바일 홈 화면 아이콘 (큰 이미지 사용) -->
+    <link rel="apple-touch-icon" href="/image_231e52.png" />
+
+    <!-- 3. PWA 테마 컬러 (브라우저 상단 색상) -->
+    <meta name="theme-color" content="#ffffff" />
+    
+    <!-- 4. 매니페스트 파일 연결 -->
+    <link rel="manifest" href="/manifest.json" />
+
     <title>lecture-scheduler</title>
   </head>
   <body>
